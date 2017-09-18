@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <style type="text/css">
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+           <h1 class="display-2">Mnemonic Check</h1>
+        </div>
+      </div>
+      <div class="row mt-2">
+          <div class="col-12">
+                <div class="input-group input-group-lg">
+                    <input id="wif" class="form-control input-lg" type="text" placeholder="Input your WIF">
+                    <button id="genMnemonic" class="btn btn-primary btn-lg" type="button" data-toggle="collapse" data-target="#mnemonicWords" aria-expanded="false" aria-controls="mnemonicWords">
+                        Generate mnemonic
+                      </button>
+                </div>
+                <div class="collapse" id="mnemonicWords">
+                  <div class="card card-block">
+                  </div>
+                </div>
+          </div>
+      </div>
+
+      <div class="row mt-2">
+          <div class="col-12">
+                <div class="input-group input-group-lg">
+                    <input id="mnemonic" class="form-control input-lg" type="text" placeholder="Input your mnemonic separated by spaces">
+                    <button id="genWIF" class="btn btn-primary btn-lg" type="button" data-toggle="collapse" data-target="#showWIF" aria-expanded="false" aria-controls="showWIF">
+                        Generate WIF
+                      </button>
+                </div>
+                <div class="collapse" id="showWIF">
+                  <div class="card card-block">
+                  </div>
+                </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <script src="./all.js"></script>
+
+    <script>
+        $(function() {
+            $('#genMnemonic').click(function() {
+                var wif = $('#wif').val();
+                var mnemonic = generateMnemonicFromWIF(wif);
+
+                $('#mnemonicWords div').text(function() {
+                    return mnemonic;
+                });
+            });
+
+            $('#genWIF').click(function() {
+                var mnemonic = $('#mnemonic').val();
+                var wif = generateWIFFromMnemonic(mnemonic);
+
+                $('#showWIF div').text(function() {
+                    return wif;
+                });
+            });
+        });
+    </script>
+  </body>
+</html>
