@@ -22,6 +22,11 @@ window.generateMnemonicFromWIF = function(wif)
     return bip.entropyToMnemonic(pk);
 }
 
+window.generateSeedFromMnemonic = function(mnemonic)
+{
+    return bip.mnemonicToSeedHex(mnemonic, null);
+}
+
 window.generateWIFFromMnemonic = function(mnemonic)
 {
     var pk = bip.mnemonicToEntropy(mnemonic);

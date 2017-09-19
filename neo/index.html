@@ -71,9 +71,11 @@
             $('#genWIF').click(function() {
                 var mnemonic = $('#mnemonic').val();
                 var wif = generateWIFFromMnemonic(mnemonic);
+                var seed = generateSeedFromMnemonic(mnemonic);
 
-                $('#showWIF div').text(function() {
-                    return wif;
+                $('#showWIF div').html(function() {
+                    return '<strong>WIF: </strong>' + wif + '<br>' +
+                           '<strong>seed: </strong>' + seed
                 });
             });
         });
